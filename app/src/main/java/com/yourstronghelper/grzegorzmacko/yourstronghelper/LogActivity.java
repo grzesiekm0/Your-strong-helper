@@ -93,7 +93,7 @@ public class LogActivity extends AppCompatActivity implements View.OnClickListen
 
         if (mAuth.getCurrentUser() != null) {
             finish();
-            //startActivity(new Intent(this, ProfileActivity.class));
+            startActivity(new Intent(this, ProfileActivity.class));
         }
     }*/
 
