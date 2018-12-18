@@ -182,8 +182,8 @@ public class ProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressBar.setVisibility(View.GONE);
-                            profileImageUrl = taskSnapshot.getDownloadUrl().toString();
-                            Uri downloadUri = task.getResult();
+                            //profileImageUrl = taskSnapshot.getDownloadUrl().toString();
+                            //Uri downloadUri = task.getResult();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
