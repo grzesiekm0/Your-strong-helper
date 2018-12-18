@@ -31,7 +31,7 @@
             android:background="@drawable/icon_camera"
             android:layout_centerHorizontal="true"
             android:layout_margin="20dp"
-            android:scaleType="centerCrop" />
+            android:contentDescription="TODO" android:scaleType="centerCrop" />
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -45,7 +45,7 @@
 
     <EditText
         android:id="@+id/editTextDisplayName"
-        android:layout_width="match_parent"
+        android:layout_width="match_parent" android:inputType="" 
         android:layout_height="wrap_content"
         android:hint="Enter Display Name" />
 

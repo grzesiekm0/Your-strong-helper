@@ -86,7 +86,7 @@ public class LogActivity extends AppCompatActivity implements View.OnClickListen
             }
         });
     }
-/*
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -95,7 +95,7 @@ public class LogActivity extends AppCompatActivity implements View.OnClickListen
             finish();
             startActivity(new Intent(this, ProfileActivity.class));
         }
-    }*/
+    }
 
     @Override
     public void onClick(View view) {
