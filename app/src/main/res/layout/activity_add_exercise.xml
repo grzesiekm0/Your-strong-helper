@@ -7,8 +7,43 @@
     android:orientation="vertical"
     tools:context=".exercises.AddExerciseActivity">
 
+    <EditText
+        android:id="@+id/editTextNameExercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nazwa ćwiczenia"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textViewTypeExercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Typ" />
+
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerType"
         android:layout_width="368dp"
         android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/editTextSeries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTextQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/buttonSaveExercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zapisz" />
+
 </LinearLayout>
