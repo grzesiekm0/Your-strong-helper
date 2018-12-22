@@ -1,46 +1,47 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.model;
 
-public class exercise {
+public class Exercise {
     private String name;
-    private char type;
+    private String type;
     private int series, quantity;
 
-    public exercise(){
+    public Exercise(){
 
     }
 
-    public exercise(String name, char type, int series, int quantity) {
+    public Exercise(String name, String type, int series, int quantity) {
         this.name = name;
         this.type = type;
         this.series = series;
         this.quantity = quantity;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public char getType() {
-        return type;
-    }
-
-    public int getSeries(){
-        return series;
-    }
-    public int getQuantity(){
-        return quantity;
-    }
-
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setType(char type) {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
         this.type = type;
+    }
+
+    public int getSeries() {
+        return series;
     }
 
     public void setSeries(int series) {
         this.series = series;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setQuantity(int quantity) {

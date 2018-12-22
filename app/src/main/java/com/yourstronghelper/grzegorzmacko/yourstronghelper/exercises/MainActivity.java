@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
