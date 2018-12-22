@@ -29,6 +29,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises.MainActivity;
 
 import java.io.IOException;
 
@@ -76,6 +77,14 @@ public class ProfileActivity extends AppCompatActivity {
                 saveUserInformation();
             }
         });
+
+        findViewById(R.id.buttonMain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+            }
+        });
+
     }
 
 
