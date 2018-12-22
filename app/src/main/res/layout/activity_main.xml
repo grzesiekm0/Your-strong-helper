@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".exercises.MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/buttonAddExercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dodaj cwiczenie" />
+
+    <Button
+        android:id="@+id/buttonTrainingPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ułóż plan treningowy" />
+
+    <Button
+        android:id="@+id/buttonGeneratePlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Generuj plan" />
+</LinearLayout>
