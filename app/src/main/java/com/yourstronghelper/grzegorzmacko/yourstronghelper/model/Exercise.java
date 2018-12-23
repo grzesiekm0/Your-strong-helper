@@ -1,9 +1,14 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.model;
 
+import com.google.firebase.firestore.Exclude;
+
 public class Exercise {
     private String name;
     private String type;
     private int series, quantity;
+
+    @Exclude
+    private String id;
 
     public Exercise(){
 
@@ -14,6 +19,14 @@ public class Exercise {
         this.type = type;
         this.series = series;
         this.quantity = quantity;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
