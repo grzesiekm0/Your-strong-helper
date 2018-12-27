@@ -6,7 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -25,17 +28,12 @@ import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
 
 public class UpdateExerciseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText editTextName;
-    private EditText editTextBrand;
-    private EditText editTextDesc;
-    private EditText editTextPrice;
-    private EditText editTextQty;
-
     private Spinner typeExercise;
     private Button addExercise;
     private EditText sersiesExercise, quantityExercise, nameExcercise;
     String type;
 
+    private static String TAG = "UpdateExerciseActivity";
 
     private FirebaseFirestore db;
 
@@ -50,32 +48,73 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
         exer = (Exercise) getIntent().getSerializableExtra("exercise");
         db = FirebaseFirestore.getInstance();
 
-       /* editTextName = findViewById(R.id.edittext_name);
-        editTextBrand = findViewById(R.id.edittext_brand);
-        editTextDesc = findViewById(R.id.edittext_desc);
-        editTextPrice = findViewById(R.id.edittext_price);
-        editTextQty = findViewById(R.id.edittext_qty);
-*/
         nameExcercise = (EditText)findViewById(R.id.editTextNameExercise);
         typeExercise = (Spinner)findViewById(R.id.spinnerType);
         addExercise = (Button)findViewById(R.id.buttonAddExercise);
         sersiesExercise = (EditText)findViewById(R.id.editTextSeries);
         quantityExercise = (EditText)findViewById(R.id.editTextQuantity);
 
-        /*editTextName.setText(product.getName());
-        editTextBrand.setText(product.getBrand());
-        editTextDesc.setText(product.getDescription());
-        editTextPrice.setText(String.valueOf(product.getPrice()));
-        editTextQty.setText(String.valueOf(product.getQty()));*/
 
-        nameExcercise.setText(exer.getName()); //nameExcercise.getText().toString().trim();
+        nameExcercise.setText(exer.getName());
        //typeExercise.setT = type;
-        sersiesExercise.setText(String.valueOf(exer.getSeries())); //= Integer.parseInt( sersiesExercise.getText().toString().trim() );
-       quantityExercise.setText(String.valueOf(exer.getQuantity()));// = Integer.parseInt( quantityExercise.getText().toString().trim() );
+        sersiesExercise.setText(String.valueOf(exer.getSeries()));
+       quantityExercise.setText(String.valueOf(exer.getQuantity()));
 
 
         findViewById(R.id.button_update).setOnClickListener(this);
         findViewById(R.id.button_delete).setOnClickListener(this);
+
+        //elementy w spinerze do wyświetlenia
+        String[] elementy = {"Plecy", "Klata", "Barki", "Biceps", "Triceps"};
+        //adapter który ustawia elementy w spinerze
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, elementy);
+        //ustawienie adaptera
+        typeExercise.setAdapter(adapter);
+        //ustawienie sluchacza
+        typeExercise.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            //przysloniecie metody wybierajacej pozycje
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int id, long position) {
+                // ta metoda wykonuje się za każdym razem, gdy zostanie wybrany jakiś element z naszej listy
+                switch((int)position)  //tutaj musimy przerzutować wartośc position na int, bo jest ona typu long, a typu long nie można używać do instrukcji switch
+                {
+                    case 0:
+                        //plecy
+                        //exer.setType('P');
+                        type = "P";
+                        break;
+                    case 1:
+                        //klata
+                        //exer.setType('K');
+                        type = "K";
+                        break;
+                    case 2:
+                        //barki
+                        //exer.setType('B');
+                        type = "B";
+                        break;
+                    case 3:
+                        //biceps
+                        //exer.setType('C');
+                        type = "C";
+                        break;
+                    case 4:
+                        //triceps
+                        //exer.setType('T');
+                        type = "T";
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // ta metoda wykonuje sie gdy lista zostanie wybrana, ale nie zostanie wybrany żaden element z listy
+
+            }
+
+        });
     }
 
     private boolean hasValidationErrors(String name, String type, int series, int quantity) {
@@ -132,9 +171,19 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "DocumentSnapshot successfully updated!");
                             Toast.makeText(UpdateExerciseActivity.this, "Zaktualizowano dane", Toast.LENGTH_LONG).show();
                         }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error updating document", e);
+                            Toast.makeText(UpdateExerciseActivity.this, "Coś poszło nie tak", Toast.LENGTH_LONG).show();
+
+                        }
                     });
+
         }
     }
 

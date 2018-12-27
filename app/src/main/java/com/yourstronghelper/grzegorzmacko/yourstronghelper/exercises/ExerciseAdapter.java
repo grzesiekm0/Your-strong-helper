@@ -68,13 +68,8 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         public void onClick(View v) {
             Exercise exer = exerciseList.get(getAdapterPosition());
             Intent intent = new Intent(mCtx, UpdateExerciseActivity.class);
-            intent.putExtra("exercise", exer)
+            intent.putExtra("exercise", exer);
             mCtx.startActivity(intent);
-
-           /* Product product = productList.get(getAdapterPosition());
-            Intent intent = new Intent(mCtx, UpdateProductActivity.class);
-            intent.putExtra("product", product);
-            mCtx.startActivity(intent);*/
         }
     }
 }
