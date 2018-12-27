@@ -2,7 +2,9 @@ package com.yourstronghelper.grzegorzmacko.yourstronghelper.model;
 
 import com.google.firebase.firestore.Exclude;
 
-public class Exercise {
+import java.io.Serializable;
+
+public class Exercise implements Serializable {
     private String name;
     private String type;
     private int series, quantity;
