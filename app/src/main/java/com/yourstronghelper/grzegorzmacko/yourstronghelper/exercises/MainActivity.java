@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
-import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.buttonDisplayExercises:
 
-                startActivity(new Intent(this, UpdateExerciseActivity.class));
+                startActivity(new Intent(this, ExerciseActivity.class));
                 break;
 
 
