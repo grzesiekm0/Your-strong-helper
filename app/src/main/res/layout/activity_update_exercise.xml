@@ -17,44 +17,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
-            android:text="Update Product"
+            android:text="Aktualizuj ćwiczenie"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/colorPrimaryDark" />
+           />
+
+        <TextView
+            android:id="@+id/textViewNameExercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nazwa ćwiczenia:"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextNameExercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
             android:ems="10"
-            android:hint="Nazwa ćwiczenia"
             android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textViewTypeExercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Typ" />
+            android:text="Typ"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinnerType"
             android:layout_width="368dp"
             android:layout_height="wrap_content" />
 
+        <TextView
+            android:id="@+id/textViewSeries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Liczba serii:"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/editTextSeries"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
             android:ems="10"
             android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textViewQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ilość powtórzeń w pierwszej serii:"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
 
         <EditText
             android:id="@+id/editTextQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
             android:ems="10"
             android:inputType="number" />
 
@@ -66,7 +93,7 @@
             android:layout_marginTop="7dp"
             android:text="Update"
             android:textAllCaps="false"
-            android:textColor="@color/colorAccent" />
+           />
 
         <Button
             android:id="@+id/button_delete"
@@ -76,7 +103,7 @@
             android:background="#cf0b0b"
             android:text="Delete"
             android:textAllCaps="false"
-            android:textColor="@color/colorAccent" />
+            />
 
     </LinearLayout>
 
