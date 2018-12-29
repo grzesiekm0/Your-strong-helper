@@ -1,5 +1,6 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -74,5 +75,12 @@ public class ExerciseActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(this, MainActivity.class));
+        return;
     }
 }

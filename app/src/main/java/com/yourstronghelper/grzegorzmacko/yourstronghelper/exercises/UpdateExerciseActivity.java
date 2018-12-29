@@ -119,6 +119,7 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onBackPressed() {
+        finish();
         startActivity(new Intent(this, ExerciseActivity.class));
         return;
     }
