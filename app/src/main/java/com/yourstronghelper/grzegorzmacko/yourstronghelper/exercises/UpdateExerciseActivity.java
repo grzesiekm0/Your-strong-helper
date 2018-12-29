@@ -117,6 +117,12 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, ExerciseActivity.class));
+        return;
+    }
+
     private boolean hasValidationErrors(String name, String type, int series, int quantity) {
         if (name.isEmpty()) {
             nameExcercise.setError("Name required");
