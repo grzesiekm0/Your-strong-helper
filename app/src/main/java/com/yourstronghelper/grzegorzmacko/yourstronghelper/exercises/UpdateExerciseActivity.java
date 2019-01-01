@@ -217,17 +217,17 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
             case R.id.button_delete:
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Are you sure about this?");
-                builder.setMessage("Deletion is permanent...");
+                builder.setTitle("Chcesz usunąć to ćwiczenie ?");
+                builder.setMessage("Zostanie usunięte na trwałe...");
 
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         deleteExercise();
                     }
                 });
 
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
