@@ -16,7 +16,15 @@ public class Exercise implements Serializable {
 
     }
 
-    public Exercise(String name, String type, int series, int quantity) {
+    public Exercise(String id, String name, String type, int series, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.series = series;
+        this.quantity = quantity;
+    }
+
+    public Exercise( String name, String type, int series, int quantity) {
         this.name = name;
         this.type = type;
         this.series = series;
