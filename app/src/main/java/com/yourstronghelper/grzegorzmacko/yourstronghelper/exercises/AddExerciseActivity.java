@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -103,7 +105,7 @@ public class AddExerciseActivity extends AppCompatActivity implements View.OnCli
             }
 
         });
-        
+
 
 
     }
@@ -138,6 +140,8 @@ public class AddExerciseActivity extends AppCompatActivity implements View.OnCli
 
 
     private void save(){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
         String nameSave = nameExcercise.getText().toString().trim();
         String typeSave = type;
         int seriesSave = Integer.parseInt( sersiesExercise.getText().toString().trim() );
@@ -146,6 +150,7 @@ public class AddExerciseActivity extends AppCompatActivity implements View.OnCli
         if (!hasValidationErrors(nameSave, typeSave, seriesSave, quantitySave)) {
 
             exer = new Exercise(
+                    user.getUid(),
                     nameSave,
                     typeSave,
                     seriesSave,
