@@ -8,7 +8,7 @@ public class Exercise implements Serializable {
     private String name;
     private String type;
     private int series, quantity;
-
+    private String idd;
     @Exclude
     private String id;
 
@@ -16,8 +16,8 @@ public class Exercise implements Serializable {
 
     }
 
-    public Exercise(String id, String name, String type, int series, int quantity) {
-        this.id = id;
+    public Exercise(String idd, String name, String type, int series, int quantity) {
+        this.idd = idd;
         this.name = name;
         this.type = type;
         this.series = series;
@@ -29,6 +29,14 @@ public class Exercise implements Serializable {
         this.type = type;
         this.series = series;
         this.quantity = quantity;
+    }
+
+    public String getIdd() {
+        return idd;
+    }
+
+    public void setIdd(String idd) {
+        this.idd = idd;
     }
 
     public String getId() {
