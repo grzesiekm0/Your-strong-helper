@@ -76,7 +76,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".exercises.TrainingPlan">
+        <activity android:name=".exercises.TrainingPlanActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

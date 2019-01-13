@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
 
-public class TrainingPlan extends AppCompatActivity {
+public class TrainingPlanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
