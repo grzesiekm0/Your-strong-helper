@@ -23,7 +23,7 @@ import java.util.List;
 public class AddTrainingPlanActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ExerciseAdapter adapter;
+    private TainingPlanAdapter adapter;
     private List<Exercise> exerciseList;
     private ProgressBar progressBar;
 
@@ -42,7 +42,7 @@ public class AddTrainingPlanActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         exerciseList = new ArrayList<>();
-        adapter = new ExerciseAdapter(this, exerciseList);
+        adapter = new TainingPlanAdapter(this, exerciseList);
 
         recyclerView.setAdapter(adapter);
 

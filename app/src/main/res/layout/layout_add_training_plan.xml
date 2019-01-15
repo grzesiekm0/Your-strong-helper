@@ -14,13 +14,7 @@
             android:orientation="vertical"
             android:padding="5dp">
 
-            <TextView
-                android:id="@+id/textview_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nokia X6"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textStyle="bold" />
+
 
             <TextView
                 android:id="@+id/textview_brand"
@@ -28,6 +22,14 @@
                 android:layout_height="wrap_content"
                 android:text="Nokia"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:id="@+id/textview_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nokia X6"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textview_desc"
@@ -51,6 +53,12 @@
                 android:text="Available Units: 5"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dodaj" />
 
 
         </LinearLayout>
