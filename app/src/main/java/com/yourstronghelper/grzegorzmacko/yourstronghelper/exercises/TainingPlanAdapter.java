@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.RegActivity;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
@@ -71,27 +78,58 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
 
         }
 
+        private void save(){
+            FirebaseFirestore db;
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser user = mAuth.getCurrentUser();
+            String nameSave = nameExcercise.getText().toString().trim();
+            String typeSave = type;
+            int seriesSave = Integer.parseInt( sersiesExercise.getText().toString().trim() );
+            int quantitySave = Integer.parseInt( quantityExercise.getText().toString().trim() );
+
+                exer = new Exercise(
+                        user.getUid(),
+                        nameSave,
+                        typeSave,
+                        seriesSave,
+                        quantitySave
+                );
+                db = FirebaseFirestore.getInstance();
+                db.collection("exercise")
+                        .add(exer)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                Toast.makeText(AddExerciseActivity.this, "Dodano cwiczenie", Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AddExerciseActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                Log.w(TAG, "Error adding document", e);
+
+                            }
+                        });
+        }
+
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
             if(v.getId() == R.id.btn) {
+                System.out.println("dupa");
 
-
+                Exercise exer = exerciseList.get(position);
             }
-            switch (v.getId()) {
+           /* switch (v.getId()) {
                 case R.id.btn:
                     System.out.println("dupa");
                     break;
-                /*case R.id.:
+                case R.id.:
                     System.out.println("dupa");
                     break;*/
             }
-
-            /*System.out.println("widok "+ v.getId());
-            Exercise exer = exerciseList.get(getAdapterPosition());
-            Intent intent = new Intent(mCtx, UpdateExerciseActivity.class);
-            intent.putExtra("exercise", exer);
-            mCtx.startActivity(intent);*/
         }
     }
-}
+
