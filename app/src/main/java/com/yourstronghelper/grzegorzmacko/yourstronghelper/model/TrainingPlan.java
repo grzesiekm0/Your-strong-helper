@@ -1,20 +1,20 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.model;
 
 public class TrainingPlan {
-    private int id;
+    private String id;
     private String name, plan;
 
-    public TrainingPlan(int id, String name, String plan) {
+    public TrainingPlan(String id, String name, String plan) {
         this.id = id;
         this.name = name;
         this.plan = plan;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
