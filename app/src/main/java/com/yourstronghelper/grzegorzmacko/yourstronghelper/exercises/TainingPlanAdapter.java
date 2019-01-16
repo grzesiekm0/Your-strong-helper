@@ -21,8 +21,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.RegActivity;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.TrainingPlan;
 
 import java.util.List;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.TrainingViewHolder>  {
     private Context mCtx;
@@ -79,35 +82,40 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
         }
 
         private void save(){
+            TrainingPlan tp;
             FirebaseFirestore db;
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             FirebaseUser user = mAuth.getCurrentUser();
-            String nameSave = nameExcercise.getText().toString().trim();
-            String typeSave = type;
+
+            String nameSave = textViewName.getText().toString().trim();
+            String planSave = "Ćw1";
+
+
             int seriesSave = Integer.parseInt( sersiesExercise.getText().toString().trim() );
             int quantitySave = Integer.parseInt( quantityExercise.getText().toString().trim() );
 
-                exer = new Exercise(
+           /* String nameSave = textViewName.getText().toString().trim();
+            String planSave = textViewBrand.getText().toString().trim();*/
+
+                tp = new TrainingPlan(
                         user.getUid(),
                         nameSave,
-                        typeSave,
-                        seriesSave,
-                        quantitySave
+                        planSave
                 );
                 db = FirebaseFirestore.getInstance();
-                db.collection("exercise")
-                        .add(exer)
+                db.collection("trainingPlan")
+                        .add(tp)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                Toast.makeText(AddExerciseActivity.this, "Dodano cwiczenie", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(this, "Dodano cwiczenie", Toast.LENGTH_LONG).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddExerciseActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                //Toast.makeText(AddExerciseActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                                 Log.w(TAG, "Error adding document", e);
 
                             }
@@ -119,8 +127,11 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
             int position = getAdapterPosition();
             if(v.getId() == R.id.btn) {
                 System.out.println("dupa");
-
                 Exercise exer = exerciseList.get(position);
+
+                // ładować do osobnej listy obiektów nastepnie wysyłamy do klasy nadrzednej, metoda zapisuje w bazie
+                // ladowac tutaj tutaj do listy obiektów zmodyfikować zrenderowac gotowe ćwiczenie i wysłać do widoku
+                //stworzyć model training plan i wyslac go do widoku, w widoku otwrozyc i zrenderować do tekstu nastepnie wsadzic do bazy
             }
            /* switch (v.getId()) {
                 case R.id.btn:
