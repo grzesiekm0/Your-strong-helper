@@ -1,6 +1,8 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.model;
 
-public class TrainingPlan {
+import java.io.Serializable;
+
+public class TrainingPlan implements Serializable {
     private String id;
     private String name, plan;
 
