@@ -23,6 +23,7 @@ import com.yourstronghelper.grzegorzmacko.yourstronghelper.RegActivity;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.TrainingPlan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.support.constraint.Constraints.TAG;
@@ -30,12 +31,17 @@ import static android.support.constraint.Constraints.TAG;
 public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.TrainingViewHolder>  {
     private Context mCtx;
     private List<Exercise> exerciseList;
+    public List<Exercise> tempExerciseList = new ArrayList<>();
+    int test;
 
     public TainingPlanAdapter(Context mCtx, List<Exercise> exerciseList) {
         this.mCtx = mCtx;
         this.exerciseList = exerciseList;
     }
 
+    public TainingPlanAdapter() {
+
+    }
     @NonNull
     @Override
     public TainingPlanAdapter.TrainingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -60,6 +66,12 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
     public int getItemCount() {
         return exerciseList.size();
     }
+    public void dupa(){
+        System.out.println(tempExerciseList);
+        for(Exercise h : tempExerciseList){
+            System.out.println("kur "+ h.getName());
+        }
+    }
 
     class TrainingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -78,10 +90,11 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
             this.btn = (Button) itemView.findViewById(R.id.btn);
             btn.setOnClickListener(this);  // change number 1
             itemView.setOnClickListener(this);
+            
 
         }
 
-        private void save(){
+        protected void save(){
             TrainingPlan tp;
             FirebaseFirestore db;
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -91,8 +104,8 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
             String planSave = "Ćw1";
 
 
-            int seriesSave = Integer.parseInt( sersiesExercise.getText().toString().trim() );
-            int quantitySave = Integer.parseInt( quantityExercise.getText().toString().trim() );
+            //int seriesSave = Integer.parseInt( sersiesExercise.getText().toString().trim() );
+            //int quantitySave = Integer.parseInt( quantityExercise.getText().toString().trim() );
 
            /* String nameSave = textViewName.getText().toString().trim();
             String planSave = textViewBrand.getText().toString().trim();*/
@@ -127,12 +140,36 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
             int position = getAdapterPosition();
             if(v.getId() == R.id.btn) {
                 System.out.println("dupa");
+                System.out.println("pozycja "+ position);
+                //Exercise exer = exerciseList.get(position);
                 Exercise exer = exerciseList.get(position);
+               // System.out.println("nazwa "+exer.getName());
+                Exercise exe = new Exercise();
+                exe.setName(exer.getName());
+                exe.setId(exer.getId());
+                exe.setIdd(exer.getIdd());
+                exe.setQuantity(exer.getQuantity());
+                exe.setSeries(exer.getSeries());
+                exe.setType(exer.getType());
+
+               tempExerciseList.add( exe );
+               String testt = "1";
+                Intent intent = new Intent(mCtx, AddTrainingPlanActivity.class);
+                intent.putExtra("trainingPlan", testt);
+                //mCtx.startActivity(intent);
+               // dupa();
 
                 // ładować do osobnej listy obiektów nastepnie wysyłamy do klasy nadrzednej, metoda zapisuje w bazie
                 // ladowac tutaj tutaj do listy obiektów zmodyfikować zrenderowac gotowe ćwiczenie i wysłać do widoku
                 //stworzyć model training plan i wyslac go do widoku, w widoku otwrozyc i zrenderować do tekstu nastepnie wsadzic do bazy
             }
+            if(v.getId() == R.id.buttonSavePlan){
+
+                for(Exercise h : exerciseList){
+                    System.out.println("kur "+ h.getName());
+                }
+            }
+
            /* switch (v.getId()) {
                 case R.id.btn:
                     System.out.println("dupa");
