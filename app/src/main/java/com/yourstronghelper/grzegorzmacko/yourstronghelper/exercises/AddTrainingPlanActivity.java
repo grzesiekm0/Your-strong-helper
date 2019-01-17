@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -20,12 +22,13 @@ import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddTrainingPlanActivity extends AppCompatActivity {
+public class AddTrainingPlanActivity extends AppCompatActivity {//implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private TainingPlanAdapter adapter;
     private List<Exercise> exerciseList;
     private ProgressBar progressBar;
+    //public Button btnSavePlan;
 
 
     private FirebaseFirestore db;
@@ -36,6 +39,7 @@ public class AddTrainingPlanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_training_plan);
 
         progressBar = findViewById(R.id.progressbar_training);
+        //findViewById(R.id.buttonSavePlan).setOnClickListener(this);
 
         recyclerView = findViewById(R.id.recyclerview_training_plan);
         recyclerView.setHasFixedSize(true);
@@ -45,7 +49,6 @@ public class AddTrainingPlanActivity extends AppCompatActivity {
         adapter = new TainingPlanAdapter(this, exerciseList);
 
         recyclerView.setAdapter(adapter);
-
 
         db = FirebaseFirestore.getInstance();
 
@@ -68,10 +71,10 @@ public class AddTrainingPlanActivity extends AppCompatActivity {
 
                                 Exercise p = d.toObject(Exercise.class);
                                 p.setId(d.getId());
-                                System.out.println("p id "+p.getId());
-                                System.out.println("p idd "+p.getIdd());
-                                System.out.println("d "+user.getUid());
-                                if(p.getIdd().equals(user.getUid())){
+                                System.out.println("p id " + p.getId());
+                                System.out.println("p idd " + p.getIdd());
+                                System.out.println("d " + user.getUid());
+                                if (p.getIdd().equals(user.getUid())) {
                                     exerciseList.add(p);
                                 }
 
@@ -85,6 +88,21 @@ public class AddTrainingPlanActivity extends AppCompatActivity {
 
                     }
                 });
+
+        /*TainingPlanAdapter tpa = new TainingPlanAdapter();
+        System.out.println();*/
+        /*for x each
+        for (DocumentSnapshot d : list) {
+
+            Exercise p = d.toObject(Exercise.class);
+            p.setId(d.getId());
+            System.out.println("p id " + p.getId());
+            System.out.println("p idd " + p.getIdd());
+            System.out.println("d " + user.getUid());
+            if (p.getIdd().equals(user.getUid())) {
+                exerciseList.add(p);
+            }
+            tpa.tempExerciseList;*/
 /*
         db.collection("cities").get().then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
@@ -93,14 +111,41 @@ public class AddTrainingPlanActivity extends AppCompatActivity {
             });
         });*/
 
-    }
+        }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        startActivity(new Intent(this, MainActivity.class));
-        return;
-    }
+        public void SavePlan(){
+        String plan = "Plan treningowy";
+            TainingPlanAdapter tpa = new TainingPlanAdapter();
+            System.out.println("test "+tpa.test);
+
+            for(Exercise h : tpa.tempExerciseList){
+                System.out.println("kur "+ h.getName());
+            }
+           //String test = (String) getIntent().getStringExtra("trainingPlan");
+           // System.out.println("test "+ test);
+            tpa.dupa();
+        }
+
+        @Override
+        public void onBackPressed () {
+            finish();
+            startActivity(new Intent(this, MainActivity.class));
+            return;
+        }
 
 
+        /*@Override
+        public void onClick (View view){
+            switch (view.getId()) {
+                case R.id.buttonSavePlan:
+                    System.out.println("pizda");
+                    SavePlan();
+
+                    break;
+               *//* case R.id.:
+                    System.out.println("dupa");
+                    break;*//*
+            }
+        }*/
 }
+
