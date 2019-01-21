@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -28,11 +30,11 @@ import java.util.List;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.TrainingViewHolder>  {
+public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.TrainingViewHolder> {
     private Context mCtx;
     private List<Exercise> exerciseList;
     public List<Exercise> tempExerciseList = new ArrayList<>();
-    int test;
+    String test;
 
     public TainingPlanAdapter(Context mCtx, List<Exercise> exerciseList) {
         this.mCtx = mCtx;
@@ -42,6 +44,7 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
     public TainingPlanAdapter() {
 
     }
+
     @NonNull
     @Override
     public TainingPlanAdapter.TrainingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -66,17 +69,29 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
     public int getItemCount() {
         return exerciseList.size();
     }
-    public void dupa(){
-        System.out.println(tempExerciseList);
-        for(Exercise h : tempExerciseList){
-            System.out.println("kur "+ h.getName());
+
+    public List<Exercise> dupa(List<Exercise> temp) {
+        System.out.println(temp);
+        for (Exercise h : temp) {
+            System.out.println("kur " + h.getName());
         }
+
+        return temp;
     }
+
+    public void wlacz() {
+        Intent intent = new Intent(mCtx, AddTrainingPlanActivity.class);
+        intent.putExtra("trainingPlan", test);
+        mCtx.startActivity(intent);
+        dupa(tempExerciseList);
+    }
+
 
     class TrainingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textViewName, textViewBrand, textViewDesc, textViewPrice, textViewQty;
         Button btn;
+        RecyclerView recyclerView;
 
         public TrainingViewHolder(View itemView) {
             super(itemView);
@@ -86,15 +101,15 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
             textViewDesc = itemView.findViewById(R.id.textview_desc);
             textViewPrice = itemView.findViewById(R.id.textview_price);
             textViewQty = itemView.findViewById(R.id.textview_quantity);
-           // btn = itemView.findViewById(R.id.btn);
+            // btn = itemView.findViewById(R.id.btn);
             this.btn = (Button) itemView.findViewById(R.id.btn);
             btn.setOnClickListener(this);  // change number 1
             itemView.setOnClickListener(this);
-            
+
 
         }
 
-        protected void save(){
+        public void save() {
             TrainingPlan tp;
             FirebaseFirestore db;
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -107,77 +122,164 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
             //int seriesSave = Integer.parseInt( sersiesExercise.getText().toString().trim() );
             //int quantitySave = Integer.parseInt( quantityExercise.getText().toString().trim() );
 
-           /* String nameSave = textViewName.getText().toString().trim();
-            String planSave = textViewBrand.getText().toString().trim();*/
+            // String nameSave = textViewName.getText().toString().trim();
+            // String planSave = textViewBrand.getText().toString().trim();
 
-                tp = new TrainingPlan(
-                        user.getUid(),
-                        nameSave,
-                        planSave
-                );
-                db = FirebaseFirestore.getInstance();
-                db.collection("trainingPlan")
-                        .add(tp)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                //Toast.makeText(this, "Dodano cwiczenie", Toast.LENGTH_LONG).show();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                //Toast.makeText(AddExerciseActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                                Log.w(TAG, "Error adding document", e);
+            tp = new TrainingPlan(
+                    user.getUid(),
+                    nameSave,
+                    planSave
+            );
+            db = FirebaseFirestore.getInstance();
+            db.collection("trainingPlan")
+                    .add(tp)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            //Toast.makeText(this, "Dodano cwiczenie", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(AddExerciseActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            Log.w(TAG, "Error adding document", e);
 
-                            }
-                        });
+                        }
+                    });
         }
 
         @Override
         public void onClick(View v) {
-            int position = getAdapterPosition();
-            if(v.getId() == R.id.btn) {
+            /*int position = getAdapterPosition();
+            if (v.getId() == R.id.btn) {
+
                 System.out.println("dupa");
-                System.out.println("pozycja "+ position);
+                System.out.println("pozycja " + position);
                 //Exercise exer = exerciseList.get(position);
                 Exercise exer = exerciseList.get(position);
-               // System.out.println("nazwa "+exer.getName());
+                // System.out.println("nazwa "+exer.getName());
                 Exercise exe = new Exercise();
                 exe.setName(exer.getName());
                 exe.setId(exer.getId());
                 exe.setIdd(exer.getIdd());
                 exe.setQuantity(exer.getQuantity());
                 exe.setSeries(exer.getSeries());
-                exe.setType(exer.getType());
+                exe.setType(exer.getType());*/
 
-               tempExerciseList.add( exe );
-               String testt = "1";
+               /* tempExerciseList.add(exe);
+
+                test = "xxx";
                 Intent intent = new Intent(mCtx, AddTrainingPlanActivity.class);
-                intent.putExtra("trainingPlan", testt);
-                //mCtx.startActivity(intent);
-               // dupa();
+                intent.putExtra("trainingPlan", test);
+                mCtx.startActivity(intent);
+                // dupa();
 
                 // ładować do osobnej listy obiektów nastepnie wysyłamy do klasy nadrzednej, metoda zapisuje w bazie
                 // ladowac tutaj tutaj do listy obiektów zmodyfikować zrenderowac gotowe ćwiczenie i wysłać do widoku
                 //stworzyć model training plan i wyslac go do widoku, w widoku otwrozyc i zrenderować do tekstu nastepnie wsadzic do bazy
-            }
-            if(v.getId() == R.id.buttonSavePlan){
 
-                for(Exercise h : exerciseList){
-                    System.out.println("kur "+ h.getName());
+            }
+            if (v.getId() == R.id.buttonSavePlan) {
+
+                for (Exercise h : exerciseList) {
+                    System.out.println("kur " + h.getName());
                 }
+                dupa(tempExerciseList);
             }
 
-           /* switch (v.getId()) {
+            switch (v.getId()) {
                 case R.id.btn:
                     System.out.println("dupa");
                     break;
                 case R.id.:
                     System.out.println("dupa");
-                    break;*/
-            }
+                    break;
+            }*/
         }
     }
+}
+
+/*public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.ViewHolder> {
+
+    public interface OnItemClickListener {
+        void onItemClick(Exercise exerciseList);
+    }
+
+    private final List<Exercise> exerciseList;
+    private final OnItemClickListener listener;
+
+    public TainingPlanAdapter(List<Exercise> exerciseList, OnItemClickListener listener) {
+        this.exerciseList = exerciseList;
+        this.listener = listener;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_add_training_plan, parent, false);
+        final ViewHolder holder = new ViewHolder(v);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "position = " + holder.getAdapterPosition());
+            }
+        });
+        return holder;
+    }
+
+
+
+    @Override public void onBindViewHolder(ViewHolder holder, int position) {
+        Exercise exer = exerciseList.get(position);
+
+        holder.textViewName.setText(exer.getName());
+        holder.textViewBrand.setText(exer.getType());
+        holder.textViewDesc.setText(String.valueOf(exer.getSeries()));
+        holder.textViewPrice.setText(String.valueOf(exer.getQuantity()));
+    }
+
+    @Override public int getItemCount() {
+        return exerciseList.size();
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView name;
+        TextView textViewName, textViewBrand, textViewDesc, textViewPrice, textViewQty;
+        Button btn;
+        //private TextView
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+           // name = (TextView) itemView.findViewById(R.id.textview_name);
+            //image = (ImageView) itemView.findViewById(R.id.image);
+            textViewName = itemView.findViewById(R.id.textview_name);
+            textViewBrand = itemView.findViewById(R.id.textview_brand);
+            textViewDesc =  itemView.findViewById(R.id.textview_desc);
+            textViewPrice =  itemView.findViewById(R.id.textview_price);
+            textViewQty =  itemView.findViewById(R.id.textview_quantity);
+             //btn = itemView.findViewById(R.id.btn);
+            btn =  itemView.findViewById(R.id.btn);
+            System.out.println("imie "+textViewName);
+        }
+
+        public void bind(final Exercise item, final OnItemClickListener listener) {
+           // name.setText(item.getName());
+            //Picasso.with(itemView.getContext()).load(item.imageUrl).into(image);
+            textViewName.setText(item.getName());
+           textViewBrand.setText(item.getType());
+           textViewDesc.setText(String.valueOf(item.getSeries()));
+            textViewPrice.setText(String.valueOf(item.getQuantity()));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
+        }
+    }
+
+
+}*/
 
