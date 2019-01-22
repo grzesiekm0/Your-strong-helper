@@ -45,15 +45,10 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
 
         progressBar = findViewById(R.id.progressbar_training);
         findViewById(R.id.buttonSavePlan).setOnClickListener(this);
-
+        textViewName = findViewById(R.id.textview_name);
         recyclerView = findViewById(R.id.recyclerview_training_plan);
        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        textViewName = findViewById(R.id.textview_name);
-
-        //this.btnSavePlan = (Button) findViewById(R.id.buttonSavePlan);
-       // btnSavePlan.setOnClickListener(this);  // change number 1
 
 
 
@@ -85,35 +80,18 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
                                 if (p.getIdd().equals(user.getUid())) {
                                     exerciseList.add(p);
                                 }
-
-
                             }
 
                             adapter.notifyDataSetChanged();
 
                         }
-
-
                     }
                 });
-
-
-
 
         adapter = new TainingPlanAdapter(this, exerciseList);
 
         recyclerView.setAdapter(adapter);
 
-        /*recyclerView.setAdapter(new TainingPlanAdapter(exerciseList, new TainingPlanAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Exercise item) {
-                Toast.makeText(AddTrainingPlanActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
-
-            }
-
-
-        }));
-*/
         RecyclerView recyclerView = findViewById(R.id.recyclerview_training_plan);
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
@@ -126,45 +104,11 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
                     }
                 })
         );
-
-
-
-        /*TainingPlanAdapter tpa = new TainingPlanAdapter();
-        System.out.println();*/
-        /*for x each
-        for (DocumentSnapshot d : list) {
-
-            Exercise p = d.toObject(Exercise.class);
-            p.setId(d.getId());
-            System.out.println("p id " + p.getId());
-            System.out.println("p idd " + p.getIdd());
-            System.out.println("d " + user.getUid());
-            if (p.getIdd().equals(user.getUid())) {
-                exerciseList.add(p);
-            }
-            tpa.tempExerciseList;*/
-/*
-        db.collection("cities").get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-            });
-        });*/
-
         }
 
         public void SavePlan(){
         String plan = "Plan treningowy";
-           /* TainingPlanAdapter tpa = new TainingPlanAdapter();
-            tpa.wlacz();
-            System.out.println("test "+tpa.test);*/
 
-            /*for(Exercise h : tpa.tempExerciseList){
-                System.out.println("kur "+ h.getName());
-            }
-           //String test = (String) getIntent().getStringExtra("trainingPlan");
-           // System.out.println("test "+ test);
-            tpa.dupa();*/
         }
 
         @Override
@@ -174,64 +118,9 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
             return;
         }
 
-
-        /*@Override
-        public void onClick (View view){
-            switch (view.getId()) {
-                case R.id.buttonSavePlan:
-                    System.out.println("pizda");
-                    SavePlan();
-
-                    System.out.println("tex"+ textViewName);
-
-                    *//*break;
-                case R.id.:
-                    System.out.println("dupa");
-                    break;*//*
-            }
-        }*/
-
     @Override
     public void onClick(View v) {
-        /*int position = recyclerView.getChildAdapterPosition(v);
-        System.out.println("pos "+position);
-        if(v.getId() == R.id.btn) {
-
-            System.out.println("dupa");
-            System.out.println("pozycja "+ position);
-            //Exercise exer = exerciseList.get(position);
-            Exercise exer = exerciseList.get(position);
-            // System.out.println("nazwa "+exer.getName());
-            Exercise exe = new Exercise();
-            exe.setName(exer.getName());
-            exe.setId(exer.getId());
-            exe.setIdd(exer.getIdd());
-            exe.setQuantity(exer.getQuantity());
-            exe.setSeries(exer.getSeries());
-            exe.setType(exer.getType());
-
-
-            // ładować do osobnej listy obiektów nastepnie wysyłamy do klasy nadrzednej, metoda zapisuje w bazie
-            // ladowac tutaj tutaj do listy obiektów zmodyfikować zrenderowac gotowe ćwiczenie i wysłać do widoku
-            //stworzyć model training plan i wyslac go do widoku, w widoku otwrozyc i zrenderować do tekstu nastepnie wsadzic do bazy
-            int itemPosition = recyclerView.indexOfChild(v);
-            System.out.println("poss "+itemPosition);
-        }*/
-            /*if(v.getId() == R.id.buttonSavePlan){
-
-                for(Exercise h : exerciseList){
-                    System.out.println("kur "+ h.getName());
-                }
-                dupa(tempExerciseList);
-            }*/
-
-           /* switch (v.getId()) {
-                case R.id.btn:
-                    System.out.println("dupa");
-                    break;
-                case R.id.:
-                    System.out.println("dupa");
-                    break;*/
+        
     }
 }
 
