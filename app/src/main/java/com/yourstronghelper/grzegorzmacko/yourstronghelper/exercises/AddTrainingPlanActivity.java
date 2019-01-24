@@ -1,10 +1,12 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -13,9 +15,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,9 +35,11 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
     private RecyclerView recyclerView;
     private TainingPlanAdapter adapter;
     private List<Exercise> exerciseList;
+    private List<Exercise> tempExerciseList;
     private ProgressBar progressBar;
     public Button btnSavePlan;
     TextView textViewName;
+    private static final String TAG = "AddTrainingPlanActivity";
 
 
     private FirebaseFirestore db;
@@ -55,6 +61,7 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
         db = FirebaseFirestore.getInstance();
 
         exerciseList = new ArrayList<>();
+        tempExerciseList = new ArrayList<>();
 
         db.collection("exercise")
                 .get()
@@ -96,7 +103,8 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        System.out.println("sru "+ position);
+                         tempExerciseList.add(exerciseList.get(position));
+                        System.out.println("Dodano ćwiczenie");
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -107,7 +115,46 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
         }
 
         public void SavePlan(){
-        String plan = "Plan treningowy";
+            StringBuilder sb;
+            StringBuilder SB;
+                String plan= "";
+                String exercise= "";
+                SB = new StringBuilder(plan);
+            sb = new StringBuilder(exercise);
+            for (Exercise d : tempExerciseList) {
+
+                sb.append("Nazwa: "+d.getName()+"\n");
+                sb.append("Typ: "+d.getType()+"\n");
+                sb.append("Serie: "+d.getSeries()+"\n");
+                sb.append("Powtórzenia w pierwszej serii: "+d.getQuantity()+"\n\n");
+            }
+            exercise = sb.toString();
+            SB.append(exercise);
+            plan = SB.toString();
+            System.out.println(plan);
+
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser user = mAuth.getCurrentUser();
+
+            TrainingPlan trainingPlan = new TrainingPlan(user.getUid(),"Przyklad",plan);
+
+            db.collection("plan")
+                    .add(trainingPlan)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            Toast.makeText(AddTrainingPlanActivity.this, "Dodano plan", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AddTrainingPlanActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            Log.w(TAG, "Error adding document", e);
+
+                        }
+                    });
 
         }
 
@@ -120,7 +167,15 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-        
+        switch(v.getId()){
+            case R.id.buttonSavePlan:
+                System.out.println("baton");
+                SavePlan();
+                break;
+            /*case R.id.textview_view_products:
+                startActivity(new Intent(this, ProductsActivity.class));
+                break;*/
+        }
     }
 }
 
