@@ -57,23 +57,6 @@ public class TrainingPlanActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-       /* db.collection("plan")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                //Log.d(TAG, document.getId() + " => " + document.getData());
-                                TrainingPlan p = document.toObject(TrainingPlan.class);
-                                trainingPlanList.add(p);
-                            }
-                        } else {
-                            //Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });*/
-
         db.collection("plan")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -91,11 +74,10 @@ public class TrainingPlanActivity extends AppCompatActivity {
                             for (DocumentSnapshot d : list) {
 
                                 TrainingPlan p = d.toObject(TrainingPlan.class);
-                                trainingPlanList.add(p);
-                                // p.setId(d.getId());
-                              /* if(p.getIdd().equals(user.getUid())){
-                                    exerciseList.add(p);
-                                }*/
+
+                               if(p.getId().equals(user.getUid())){
+                                    trainingPlanList.add(p);
+                                }
 
 
                             }
@@ -107,13 +89,7 @@ public class TrainingPlanActivity extends AppCompatActivity {
 
                     }
                 });
-/*
-        db.collection("cities").get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-            });
-        });*/
+        
 
     }
 
