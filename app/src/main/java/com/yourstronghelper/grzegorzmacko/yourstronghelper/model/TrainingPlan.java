@@ -1,15 +1,29 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.model;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.io.Serializable;
 
 public class TrainingPlan implements Serializable {
-    private String id;
+    private String idd;
     private String name, plan;
+    @Exclude
+    private String id;
 
-    public TrainingPlan(String id, String name, String plan) {
-        this.id = id;
+    public TrainingPlan(String idd, String name, String plan) {
+        this.id = idd;
         this.name = name;
         this.plan = plan;
+    }
+
+    public TrainingPlan(){}
+
+    public String getIdd() {
+        return idd;
+    }
+
+    public void setIdd(String idd) {
+        this.idd = idd;
     }
 
     public String getId() {
