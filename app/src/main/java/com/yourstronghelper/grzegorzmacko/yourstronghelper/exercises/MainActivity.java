@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.buttonTrainingPlan:
 
-               // startActivity(new Intent(this, TO DO.class));
+                startActivity(new Intent(this, AddTrainingPlanActivity.class));
                 break;
 
             case R.id.buttonGeneratePlan:
