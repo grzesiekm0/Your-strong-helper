@@ -24,6 +24,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Generuj plan" />
+    <Button
+        android:id="@+id/buttonDisplayTrainingsPlans"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wyświetl plany treningowe" />
 
     <Button
         android:id="@+id/buttonDisplayExercises"
