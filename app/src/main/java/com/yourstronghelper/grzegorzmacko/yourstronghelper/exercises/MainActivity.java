@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.buttonTrainingPlan).setOnClickListener(this);
         findViewById(R.id.buttonGeneratePlan).setOnClickListener(this);
         findViewById(R.id.buttonDisplayExercises).setOnClickListener(this);
+        findViewById(R.id.buttonDisplayTrainingsPlans).setOnClickListener(this);
     }
 
     @Override
@@ -37,6 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonGeneratePlan:
 
                 // startActivity(new Intent(this, TO DO.class));
+                break;
+
+            case R.id.buttonDisplayTrainingsPlans:
+
+                startActivity(new Intent(this, TrainingPlanActivity.class));
                 break;
 
             case R.id.buttonDisplayExercises:
