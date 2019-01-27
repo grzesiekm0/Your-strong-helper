@@ -28,5 +28,17 @@
         android:layout_marginBottom="44dp"
         android:text="Zapisz" />
 
+    <EditText
+        android:id="@+id/editTextNamePlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="112dp"
+        android:ems="10"
+        android:hint="Nazwa"
+        android:inputType="textPersonName" />
+
 
 </RelativeLayout>
