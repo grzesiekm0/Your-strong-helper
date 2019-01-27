@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
     private ProgressBar progressBar;
     public Button btnSavePlan;
     TextView textViewName;
+    private EditText editTextNamePlan;
     private static final String TAG = "AddTrainingPlanActivity";
 
 
@@ -53,6 +55,7 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
         findViewById(R.id.buttonSavePlan).setOnClickListener(this);
         textViewName = findViewById(R.id.textview_name);
         recyclerView = findViewById(R.id.recyclerview_training_plan);
+        editTextNamePlan = findViewById(R.id.editTextNamePlan);
        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -115,6 +118,7 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
         }
 
         public void SavePlan(){
+            String planName = editTextNamePlan.getText().toString().trim();
             StringBuilder sb;
             StringBuilder SB;
                 String plan= "";
@@ -136,7 +140,10 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             FirebaseUser user = mAuth.getCurrentUser();
 
-            TrainingPlan trainingPlan = new TrainingPlan(user.getUid(),"Przyklad",plan);
+            TrainingPlan trainingPlan = new TrainingPlan(
+                    user.getUid(),
+                    planName,
+                    plan);
 
             db.collection("plan")
                     .add(trainingPlan)
