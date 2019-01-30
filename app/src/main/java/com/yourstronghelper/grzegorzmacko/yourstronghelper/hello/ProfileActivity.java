@@ -1,4 +1,4 @@
-package com.yourstronghelper.grzegorzmacko.yourstronghelper;
+package com.yourstronghelper.grzegorzmacko.yourstronghelper.hello;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,7 +28,8 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises.MainActivity;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.MainActivity;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
 
 import java.io.IOException;
 

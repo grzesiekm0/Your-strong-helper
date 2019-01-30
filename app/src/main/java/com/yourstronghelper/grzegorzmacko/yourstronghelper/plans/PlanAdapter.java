@@ -1,7 +1,6 @@
-package com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises;
+package com.yourstronghelper.grzegorzmacko.yourstronghelper.plans;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
-import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.TrainingPlan;
 
 import java.util.List;

@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.MainActivity;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
 

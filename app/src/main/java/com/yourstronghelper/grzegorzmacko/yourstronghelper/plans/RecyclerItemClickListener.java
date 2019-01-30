@@ -1,4 +1,4 @@
-package com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises;
+package com.yourstronghelper.grzegorzmacko.yourstronghelper.plans;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

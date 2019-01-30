@@ -1,6 +1,5 @@
-package com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises;
+package com.yourstronghelper.grzegorzmacko.yourstronghelper;
 
-import android.app.AlarmManager;
 import android.content.Intent;
 import android.provider.AlarmClock;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises.AddExerciseActivity;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises.ExerciseActivity;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.plans.AddTrainingPlanActivity;
+import com.yourstronghelper.grzegorzmacko.yourstronghelper.plans.TrainingPlanActivity;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    ArrayList<Integer> alarmDays= new ArrayList<Integer>();
 
 
     @Override
@@ -22,23 +29,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.buttonDisplayExercises).setOnClickListener(this);
         findViewById(R.id.buttonDisplayTrainingsPlans).setOnClickListener(this);
         findViewById(R.id.buttonSetAlarm).setOnClickListener(this);
+        alarmDays.add(Calendar.SATURDAY);
+        alarmDays.add(Calendar.FRIDAY);
+        alarmDays.add(Calendar.SUNDAY);
+
+
     }
+
+
 
     public void createAlarm(String message, int hour, int minutes) {
         Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
                 .putExtra(AlarmClock.EXTRA_MESSAGE, message)
-                /*.putExtra(AlarmClock.EXTRA_HOUR, hour)
-                .putExtra(AlarmClock.EXTRA_MINUTES, minutes)*/
-                .putExtra(AlarmManager.INTERVAL_DAY);
+                .putExtra(AlarmClock.EXTRA_HOUR, hour)
+                .putExtra(AlarmClock.EXTRA_MINUTES, minutes)
+                .putExtra(AlarmClock.EXTRA_DAYS, alarmDays);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
-        alarmMgr?.setInexactRepeating(
-                AlarmManager.RTC_WAKEUP,
-                calendar.timeInMillis,
-                AlarmManager.INTERVAL_DAY,
-                alarmIntent
-        )
+
     }
 
     @Override
