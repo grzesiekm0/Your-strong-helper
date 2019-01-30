@@ -31,4 +31,10 @@
         android:layout_height="wrap_content"
         android:text="Wyświetl plany treningowe" />
 
+    <Button
+        android:id="@+id/buttonSetAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ustaw alarm" />
+
 </LinearLayout>
