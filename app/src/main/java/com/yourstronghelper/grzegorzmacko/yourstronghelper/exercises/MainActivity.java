@@ -1,6 +1,8 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises;
 
+import android.app.AlarmManager;
 import android.content.Intent;
+import android.provider.AlarmClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,9 +19,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.buttonAddExercise).setOnClickListener(this);
         findViewById(R.id.buttonTrainingPlan).setOnClickListener(this);
-        findViewById(R.id.buttonGeneratePlan).setOnClickListener(this);
         findViewById(R.id.buttonDisplayExercises).setOnClickListener(this);
         findViewById(R.id.buttonDisplayTrainingsPlans).setOnClickListener(this);
+        findViewById(R.id.buttonSetAlarm).setOnClickListener(this);
+    }
+
+    public void createAlarm(String message, int hour, int minutes) {
+        Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
+                .putExtra(AlarmClock.EXTRA_MESSAGE, message)
+                /*.putExtra(AlarmClock.EXTRA_HOUR, hour)
+                .putExtra(AlarmClock.EXTRA_MINUTES, minutes)*/
+                .putExtra(AlarmManager.INTERVAL_DAY);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+        alarmMgr?.setInexactRepeating(
+                AlarmManager.RTC_WAKEUP,
+                calendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY,
+                alarmIntent
+        )
     }
 
     @Override
@@ -45,8 +64,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 startActivity(new Intent(this, ExerciseActivity.class));
                 break;
+            case R.id.buttonSetAlarm:
+                    createAlarm("Dupa", 6,12);
+                //startActivity(new Intent(this, ExerciseActivity.class));
+                break;
 
 
         }
     }
+
+
 }
