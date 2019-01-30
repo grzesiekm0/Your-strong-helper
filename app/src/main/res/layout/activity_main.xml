@@ -14,20 +14,21 @@
         android:text="Dodaj cwiczenie" />
 
     <Button
+        android:id="@+id/buttonDisplayExercises"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wyświetl ćwiczenia" />
+
+    <Button
         android:id="@+id/buttonTrainingPlan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ułóż plan treningowy" />
-    
+
     <Button
         android:id="@+id/buttonDisplayTrainingsPlans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Wyświetl plany treningowe" />
 
-    <Button
-        android:id="@+id/buttonDisplayExercises"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Wyświetl ćwiczenia" />
 </LinearLayout>
