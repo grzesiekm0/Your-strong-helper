@@ -18,12 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ułóż plan treningowy" />
-
-    <Button
-        android:id="@+id/buttonGeneratePlan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Generuj plan" />
+    
     <Button
         android:id="@+id/buttonDisplayTrainingsPlans"
         android:layout_width="match_parent"
