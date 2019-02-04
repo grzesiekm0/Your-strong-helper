@@ -112,16 +112,16 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             if (user.isEmailVerified()) {
-                textView.setText("Email Verified");
+                textView.setText("Email zweryfikowano");
             } else {
-                textView.setText("Email Not Verified (Click to Verify)");
+                textView.setText("Email jest niezweryfikowany (Kliknij by zweryfikować)");
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(ProfileActivity.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfileActivity.this, "Weryfikacja została wysłana na adres email", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -137,7 +137,7 @@ public class ProfileActivity extends AppCompatActivity {
         String displayName = editText.getText().toString();
 
         if (displayName.isEmpty()) {
-            editText.setError("Name required");
+            editText.setError("Imię wymagane");
             editText.requestFocus();
             return;
         }
@@ -155,7 +155,7 @@ public class ProfileActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(ProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfileActivity.this, "Zaktualizowano profil", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -237,7 +237,7 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Profile Image"), CHOOSE_IMAGE);
+        startActivityForResult(Intent.createChooser(intent, "Wybierz avatar profilu"), CHOOSE_IMAGE);
     }
 
 }
