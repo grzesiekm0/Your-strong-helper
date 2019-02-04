@@ -45,25 +45,25 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
         String password = mPasswordView.getText().toString().trim();
 
         if (email.isEmpty()) {
-            mEmailView.setError("Email is required");
+            mEmailView.setError("Email jest wymagany");
             mEmailView.requestFocus();
             return;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            mEmailView.setError("Please enter a valid email");
+            mEmailView.setError("Proszę wprowadzić prawidłowy email");
             mEmailView.requestFocus();
             return;
         }
 
         if (password.isEmpty()) {
-            mPasswordView.setError("Password is required");
+            mPasswordView.setError("Hasło jest wymagane");
             mPasswordView.requestFocus();
             return;
         }
 
         if (password.length() < 6) {
-            mPasswordView.setError("Minimum lenght of password should be 6");
+            mPasswordView.setError("Minimum 6 znaków");
             mPasswordView.requestFocus();
             return;
         }
@@ -80,7 +80,7 @@ public class RegActivity extends AppCompatActivity implements View.OnClickListen
                 } else {
 
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Użytkownik jest już zarejestrowany", Toast.LENGTH_SHORT).show();
 
                     } else {
                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
