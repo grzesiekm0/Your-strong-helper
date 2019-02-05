@@ -29,26 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.buttonDisplayExercises).setOnClickListener(this);
         findViewById(R.id.buttonDisplayTrainingsPlans).setOnClickListener(this);
         findViewById(R.id.buttonSetAlarm).setOnClickListener(this);
-        alarmDays.add(Calendar.SATURDAY);
-        alarmDays.add(Calendar.FRIDAY);
-        alarmDays.add(Calendar.SUNDAY);
-
-
     }
 
-
-
-    public void createAlarm(String message, int hour, int minutes) {
-        Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
-                .putExtra(AlarmClock.EXTRA_MESSAGE, message)
-                .putExtra(AlarmClock.EXTRA_HOUR, hour)
-                .putExtra(AlarmClock.EXTRA_MINUTES, minutes)
-                .putExtra(AlarmClock.EXTRA_DAYS, alarmDays);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
-
-    }
 
     @Override
     public void onClick(View view) {
@@ -74,8 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, ExerciseActivity.class));
                 break;
             case R.id.buttonSetAlarm:
-                    createAlarm("Dupa", 6,12);
-                //startActivity(new Intent(this, ExerciseActivity.class));
+                Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM);
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
                 break;
 
 
