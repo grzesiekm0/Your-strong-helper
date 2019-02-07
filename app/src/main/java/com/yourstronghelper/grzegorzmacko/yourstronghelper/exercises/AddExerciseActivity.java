@@ -113,25 +113,25 @@ public class AddExerciseActivity extends AppCompatActivity implements View.OnCli
 
     private boolean hasValidationErrors(String name, String type, int series, int quantity) {
         if (name.isEmpty()) {
-            nameExcercise.setError("Name required");
+            nameExcercise.setError("Wymagana nazwa");
             nameExcercise.requestFocus();
             return true;
         }
 
         if (type.isEmpty()) {
-            ((TextView)typeExercise.getSelectedView()).setError("Error message");
+            ((TextView)typeExercise.getSelectedView()).setError("Wymagany typ");
             typeExercise.requestFocus();
             return true;
         }
 
         if (series == 0) {
-            sersiesExercise.setError("Description required");
+            sersiesExercise.setError("Wymagane serie");
             sersiesExercise.requestFocus();
             return true;
         }
 
         if (quantity == 0) {
-            quantityExercise.setError("Price required");
+            quantityExercise.setError("Wymagane powtórzenia");
             quantityExercise.requestFocus();
             return true;
         }
