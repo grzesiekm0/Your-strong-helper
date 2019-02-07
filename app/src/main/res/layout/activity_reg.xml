@@ -48,7 +48,7 @@
             android:id="@+id/textViewReg"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:text="Nie posiadasz jeszcze konta? Zarejestruj się"
+            android:text="Posiadasz już konto? Zaloguj się"
             android:textSize="14sp" />
     </LinearLayout>
 
