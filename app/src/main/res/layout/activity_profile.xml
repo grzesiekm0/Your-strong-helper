@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap on camera to choose profile picture"
+        android:text="Kliknij w kamere aby wybrać zdjęcie profilowe"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
@@ -47,7 +47,7 @@
         android:id="@+id/editTextDisplayName"
         android:layout_width="match_parent" android:inputType="" 
         android:layout_height="wrap_content"
-        android:hint="Enter Display Name" />
+        android:hint="Wprowadź przyjazną nazwę konta" />
 
     <TextView
         android:id="@+id/textViewVerified"
@@ -65,7 +65,7 @@
         android:background="@drawable/rounded_button_solid"
         android:paddingLeft="55dp"
         android:paddingRight="55dp"
-        android:text="Save"
+        android:text="Zapisz"
         android:textAllCaps="false" />
 
     <Button
