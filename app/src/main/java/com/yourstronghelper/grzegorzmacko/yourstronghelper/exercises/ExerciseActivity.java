@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -49,7 +50,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
 
         db = FirebaseFirestore.getInstance();
-
+       // db.collection("exercise").whereEqualTo("idd", "8iescbeq0ohPRRrDGQSwHjdNVns2").get();
 
         db.collection("exercise")
                 .get()
@@ -58,7 +59,9 @@ public class ExerciseActivity extends AppCompatActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         FirebaseAuth mAuth = FirebaseAuth.getInstance();
                         FirebaseUser user = mAuth.getCurrentUser();
+                       // DocumentReference newCityRef = db.collection("exercise").document();
 
+                       // System.out.println("i co "+newCityRef);
                         progressBar.setVisibility(View.GONE);
 
                         if (!queryDocumentSnapshots.isEmpty()) {
@@ -68,8 +71,10 @@ public class ExerciseActivity extends AppCompatActivity {
                             for (DocumentSnapshot d : list) {
 
                                 Exercise p = d.toObject(Exercise.class);
+                                System.out.println("Moze "+d.getId());
                                // p.setId(d.getId());
                                 if(p.getIdd().equals(user.getUid())){
+                                    p.setId(d.getId());
                                     exerciseList.add(p);
                                 }
 
