@@ -167,27 +167,23 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
                     quantityUpdate
             );
 
-
+            System.out.println("co to"+exer.getId());
             db.collection("exercise").document(exer.getId())
                     .update(
                             "name", p.getName(),
                             "type", p.getType(),
                             "series", p.getSeries(),
-                            "quantity", p.getQuantity()
-                    )
+                            "quantity", p.getQuantity())
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Log.d(TAG, "DocumentSnapshot successfully updated!");
-                            Toast.makeText(UpdateExerciseActivity.this, "Zaktualizowano dane", Toast.LENGTH_LONG).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Log.w(TAG, "Error updating document", e);
-                            Toast.makeText(UpdateExerciseActivity.this, "Coś poszło nie tak", Toast.LENGTH_LONG).show();
-
                         }
                     });
 
