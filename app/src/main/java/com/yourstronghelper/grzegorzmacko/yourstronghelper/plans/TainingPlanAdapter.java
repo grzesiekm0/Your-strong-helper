@@ -126,13 +126,13 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            //Toast.makeText(this, "Dodano cwiczenie", Toast.LENGTH_LONG).show();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //Toast.makeText(AddExerciseActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+
                             Log.w(TAG, "Error adding document", e);
 
                         }
@@ -141,21 +141,7 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
 
         @Override
         public void onClick(View v) {
-            /*int position = getAdapterPosition();
-            if (v.getId() == R.id.btn) {
-
-                System.out.println("dupa");
-                System.out.println("pozycja " + position);
-                //Exercise exer = exerciseList.get(position);
-                Exercise exer = exerciseList.get(position);
-                // System.out.println("nazwa "+exer.getName());
-                Exercise exe = new Exercise();
-                exe.setName(exer.getName());
-                exe.setId(exer.getId());
-                exe.setIdd(exer.getIdd());
-                exe.setQuantity(exer.getQuantity());
-                exe.setSeries(exer.getSeries());
-                exe.setType(exer.getType());*/
+            
 
 
         }
