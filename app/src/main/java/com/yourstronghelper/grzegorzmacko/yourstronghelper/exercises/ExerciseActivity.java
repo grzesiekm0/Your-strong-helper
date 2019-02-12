@@ -48,9 +48,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
-
         db = FirebaseFirestore.getInstance();
-       // db.collection("exercise").whereEqualTo("idd", "8iescbeq0ohPRRrDGQSwHjdNVns2").get();
 
         db.collection("exercise")
                 .get()
@@ -59,9 +57,6 @@ public class ExerciseActivity extends AppCompatActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         FirebaseAuth mAuth = FirebaseAuth.getInstance();
                         FirebaseUser user = mAuth.getCurrentUser();
-                       // DocumentReference newCityRef = db.collection("exercise").document();
-
-                       // System.out.println("i co "+newCityRef);
                         progressBar.setVisibility(View.GONE);
 
                         if (!queryDocumentSnapshots.isEmpty()) {
@@ -72,7 +67,6 @@ public class ExerciseActivity extends AppCompatActivity {
 
                                 Exercise p = d.toObject(Exercise.class);
                                 System.out.println("Moze "+d.getId());
-                               // p.setId(d.getId());
                                 if(p.getIdd().equals(user.getUid())){
                                     p.setId(d.getId());
                                     exerciseList.add(p);
@@ -88,14 +82,6 @@ public class ExerciseActivity extends AppCompatActivity {
 
                     }
                 });
-/*
-        db.collection("cities").get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-            });
-        });*/
-
     }
 
     @Override
