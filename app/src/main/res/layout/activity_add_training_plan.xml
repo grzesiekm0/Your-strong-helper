@@ -6,39 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".plans.AddTrainingPlanActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_training_plan"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ProgressBar
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/progressbar_training"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/buttonSavePlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/progressbar_training"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-17dp"
-        android:layout_marginBottom="44dp"
-        android:text="Zapisz" />
-
-    <EditText
-        android:id="@+id/editTextNamePlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="112dp"
-        android:ems="10"
-        android:hint="Nazwa"
-        android:inputType="textPersonName" />
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_training_plan"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="76dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextNamePlan"
+                android:layout_width="match_parent"
+                android:layout_height="63dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="94dp"
+                android:ems="10"
+                android:hint="Nazwa"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar_training"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        <Button
+            android:id="@+id/buttonSavePlan"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignEnd="@+id/progressbar_training"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="5dp"
+            android:text="Zapisz" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
