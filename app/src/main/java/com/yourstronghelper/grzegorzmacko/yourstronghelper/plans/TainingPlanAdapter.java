@@ -66,7 +66,7 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
         return exerciseList.size();
     }
 
-    public List<Exercise> dupa(List<Exercise> temp) {
+    public List<Exercise> excample(List<Exercise> temp) {
         System.out.println(temp);
         for (Exercise h : temp) {
             System.out.println("kur " + h.getName());
@@ -79,7 +79,7 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
         Intent intent = new Intent(mCtx, AddTrainingPlanActivity.class);
         intent.putExtra("trainingPlan", test);
         mCtx.startActivity(intent);
-        dupa(tempExerciseList);
+        excample(tempExerciseList);
     }
 
 
@@ -96,7 +96,6 @@ public class TainingPlanAdapter extends RecyclerView.Adapter<TainingPlanAdapter.
             textViewBrand = itemView.findViewById(R.id.textview_brand);
             textViewDesc = itemView.findViewById(R.id.textview_desc);
             textViewPrice = itemView.findViewById(R.id.textview_price);
-            textViewQty = itemView.findViewById(R.id.textview_quantity);
             // btn = itemView.findViewById(R.id.btn);
             this.btn = (Button) itemView.findViewById(R.id.btn);
             btn.setOnClickListener(this);  // change number 1
