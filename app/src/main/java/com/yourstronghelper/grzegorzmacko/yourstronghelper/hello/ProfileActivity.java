@@ -43,16 +43,20 @@ public class ProfileActivity extends AppCompatActivity {
 
     Uri uriProfileImage;
     ProgressBar progressBar;
-
+    StorageReference storageReference;
     String profileImageUrl;
 
     FirebaseAuth mAuth;
+
+    FirebaseStorage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         mAuth = FirebaseAuth.getInstance();
+
+        storage = FirebaseStorage.getInstance();
 
        //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -99,13 +103,21 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void loadUserInformation() {
         final FirebaseUser user = mAuth.getCurrentUser();
+        storageReference = FirebaseStorage.getInstance().getReference();
 
+        System.out.println("Grze 0");
         if (user != null) {
-            if (user.getPhotoUrl() != null) {
-                Glide.with(this)
-                        .load(user.getPhotoUrl().toString())
+            System.out.println("Grze 1 "+ storageReference);
+//            if (user.getPhotoUrl() != null) {
+//                System.out.println("Grze 2");
+//                Glide.with(this)
+//                        .load(user.getPhotoUrl().toString())
+//                        .into(imageView);
+
+            Glide.with(this /* context */)
+                        .load(storageReference)
                         .into(imageView);
-            }
+           // }
 
             if (user.getDisplayName() != null) {
                 editText.setText(user.getDisplayName());
@@ -133,6 +145,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void saveUserInformation() {
 
+        StorageReference storageRef = storage.getReference();
 
         String displayName = editText.getText().toString();
 
@@ -193,6 +206,7 @@ public class ProfileActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             //profileImageUrl = taskSnapshot.getDownloadUrl().toString();
                             //Uri downloadUri = task.getResult();
+                            Toast.makeText(getApplicationContext(), "Zapisano pomyślnie", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
