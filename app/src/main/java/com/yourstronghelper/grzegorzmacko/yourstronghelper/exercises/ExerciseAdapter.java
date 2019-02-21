@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
 
@@ -50,6 +52,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
     class ExerciseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textViewName, textViewBrand, textViewDesc, textViewPrice, textViewQty;
+       FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         public ExerciseViewHolder(View itemView) {
             super(itemView);
@@ -58,7 +61,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             textViewBrand = itemView.findViewById(R.id.textview_brand);
             textViewDesc = itemView.findViewById(R.id.textview_desc);
             textViewPrice = itemView.findViewById(R.id.textview_price);
-            textViewQty = itemView.findViewById(R.id.textview_quantity);
+
 
             itemView.setOnClickListener(this);
 
@@ -66,6 +69,8 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
         @Override
         public void onClick(View v) {
+            DocumentReference newCityRef = db.collection("exercise").document();
+            System.out.println(newCityRef);
             Exercise exer = exerciseList.get(getAdapterPosition());
             Intent intent = new Intent(mCtx, UpdateExerciseActivity.class);
             intent.putExtra("exercise", exer);
