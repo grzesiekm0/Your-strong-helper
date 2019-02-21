@@ -15,42 +15,57 @@
             android:padding="5dp">
 
             <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nazwa" />
+
+            <TextView
                 android:id="@+id/textview_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nokia X6"
+                android:text="Nazwa"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Typ" />
 
             <TextView
                 android:id="@+id/textview_brand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nokia"
+                android:text="Typ"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Serie" />
 
             <TextView
                 android:id="@+id/textview_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="6GB Ram Snapdragon 660 SOC, 64gb Storage"
+                android:text="Serie"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Maksymalna ilsoc powtórzeń" />
 
             <TextView
                 android:id="@+id/textview_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="INR 15000"
-                android:textSize="32sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textview_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Available Units: 5"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textStyle="bold" />
+                android:text="Max powtórzeń"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
 
         </LinearLayout>
