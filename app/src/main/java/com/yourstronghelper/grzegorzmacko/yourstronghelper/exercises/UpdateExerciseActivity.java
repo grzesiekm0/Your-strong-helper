@@ -166,8 +166,6 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
                     seriesUpdate,
                     quantityUpdate
             );
-
-            System.out.println("co to"+exer.getId());
             db.collection("exercise").document(exer.getId())
                     .update(
                             "name", p.getName(),
