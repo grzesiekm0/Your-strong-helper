@@ -36,10 +36,10 @@ public class AddExerciseActivity extends AppCompatActivity implements View.OnCli
     Exercise exer;
 
     //variables for save
-    String name;
+    //String name;
     String type;
-    int series;
-    int quantity;
+    //int series;
+    //int quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

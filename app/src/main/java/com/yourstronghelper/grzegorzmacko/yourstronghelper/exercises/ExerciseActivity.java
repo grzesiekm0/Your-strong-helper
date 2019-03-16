@@ -72,14 +72,9 @@ public class ExerciseActivity extends AppCompatActivity {
                                     exerciseList.add(p);
                                 }
 
-
                             }
-
                             adapter.notifyDataSetChanged();
-
                         }
-
-
                     }
                 });
     }
