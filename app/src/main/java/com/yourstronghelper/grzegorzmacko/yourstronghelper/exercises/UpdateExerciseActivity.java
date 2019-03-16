@@ -32,13 +32,9 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
     private Button addExercise;
     private EditText sersiesExercise, quantityExercise, nameExcercise;
     String type;
-
     private static String TAG = "UpdateExerciseActivity";
-
     private FirebaseFirestore db;
-
     private Exercise exer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +50,11 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
         sersiesExercise = (EditText)findViewById(R.id.editTextSeries);
         quantityExercise = (EditText)findViewById(R.id.editTextQuantity);
 
-
         nameExcercise.setText(exer.getName());
        //typeExercise.setT = type;
         sersiesExercise.setText(String.valueOf(exer.getSeries()));
        quantityExercise.setText(String.valueOf(exer.getQuantity()));
-
-
+       
         findViewById(R.id.button_update).setOnClickListener(this);
         findViewById(R.id.button_delete).setOnClickListener(this);
 

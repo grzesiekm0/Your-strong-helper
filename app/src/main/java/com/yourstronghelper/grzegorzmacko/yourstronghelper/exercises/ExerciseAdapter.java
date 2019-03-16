@@ -62,9 +62,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             textViewDesc = itemView.findViewById(R.id.textview_desc);
             textViewPrice = itemView.findViewById(R.id.textview_price);
 
-
             itemView.setOnClickListener(this);
-
         }
 
         @Override

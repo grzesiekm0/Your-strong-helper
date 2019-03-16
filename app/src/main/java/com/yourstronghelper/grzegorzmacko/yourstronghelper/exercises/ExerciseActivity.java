@@ -66,7 +66,6 @@ public class ExerciseActivity extends AppCompatActivity {
                             for (DocumentSnapshot d : list) {
 
                                 Exercise p = d.toObject(Exercise.class);
-                                System.out.println("Moze "+d.getId());
                                 if(p.getIdd().equals(user.getUid())){
                                     p.setId(d.getId());
                                     exerciseList.add(p);
