@@ -54,7 +54,7 @@ public class UpdateExerciseActivity extends AppCompatActivity implements View.On
        //typeExercise.setT = type;
         sersiesExercise.setText(String.valueOf(exer.getSeries()));
        quantityExercise.setText(String.valueOf(exer.getQuantity()));
-       
+
         findViewById(R.id.button_update).setOnClickListener(this);
         findViewById(R.id.button_delete).setOnClickListener(this);
 

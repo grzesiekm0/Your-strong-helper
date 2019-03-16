@@ -41,8 +41,6 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
     TextView textViewName;
     private EditText editTextNamePlan;
     private static final String TAG = "AddTrainingPlanActivity";
-
-
     private FirebaseFirestore db;
 
     @Override
@@ -57,11 +55,7 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
         editTextNamePlan = findViewById(R.id.editTextNamePlan);
        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-
         db = FirebaseFirestore.getInstance();
-
         exerciseList = new ArrayList<>();
         tempExerciseList = new ArrayList<>();
 
@@ -90,15 +84,12 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
                                     exerciseList.add(p);
                                 }
                             }
-
                             adapter.notifyDataSetChanged();
-
                         }
                     }
                 });
 
         adapter = new TainingPlanAdapter(this, exerciseList);
-
         recyclerView.setAdapter(adapter);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_training_plan);
@@ -161,7 +152,6 @@ public class AddTrainingPlanActivity extends AppCompatActivity implements View.O
 
                         }
                     });
-
         }
 
         @Override
