@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class ExerciseActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
+    private ListView recyclerView;
     private ExerciseAdapter adapter;
     private List<Exercise> exerciseList;
     private ProgressBar progressBar;
@@ -40,13 +41,14 @@ public class ExerciseActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar);
 
         recyclerView = findViewById(R.id.recyclerview_products);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //recyclerView.setHasFixedSize(true);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         exerciseList = new ArrayList<>();
-        adapter = new ExerciseAdapter(this, exerciseList);
+        //adapter = new ExerciseAdapter(this, exerciseList);
+        adapter = new ExerciseAdapter(getApplicationContext(), exerciseList);
 
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
 
