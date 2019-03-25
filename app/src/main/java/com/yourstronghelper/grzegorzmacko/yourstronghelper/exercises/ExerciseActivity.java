@@ -45,8 +45,11 @@ public class ExerciseActivity extends AppCompatActivity {
         //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         exerciseList = new ArrayList<>();
-        //adapter = new ExerciseAdapter(this, exerciseList);
-        adapter = new ExerciseAdapter(getApplicationContext(), exerciseList);
+        adapter = new ExerciseAdapter(this, exerciseList);
+        //adapter = new ExerciseAdapter(getApplicationContext(), exerciseList);
+
+        //adapter= new CustomAdapter(exerciseList,getApplicationContext());
+
 
         //recyclerView.setAdapter(adapter);
 
