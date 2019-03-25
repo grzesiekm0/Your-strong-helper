@@ -1,9 +1,14 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.R;
 import com.yourstronghelper.grzegorzmacko.yourstronghelper.model.Exercise;
@@ -17,9 +22,10 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
 
     // View lookup cache
     private static class ViewHolder {
-        TextView txtName;
-        TextView txtType;
-        TextView txtVersion;
+        TextView textViewName;
+        TextView textViewBrand;
+        TextView textViewDesc;
+        TextView textViewPrice;
         ImageView info;
     }
 
@@ -54,18 +60,19 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
         Exercise dataModel = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
-
+       // Exercise exer = exer.getId(position);
         final View result;
 
         if (convertView == null) {
 
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.row_item, parent, false);
-            viewHolder.txtName = (TextView) convertView.findViewById(R.id.name);
-            viewHolder.txtType = (TextView) convertView.findViewById(R.id.type);
-            viewHolder.txtVersion = (TextView) convertView.findViewById(R.id.version_number);
-            viewHolder.info = (ImageView) convertView.findViewById(R.id.item_info);
+            convertView = inflater.inflate(R.layout.layout_exercise, parent, false);
+            /*viewHolder.textViewName.setText(exer.getName());
+            viewHolder.textViewBrand.setText(exer.getType());
+            viewHolder.textViewDesc.setText(String.valueOf(exer.getSeries()));
+            viewHolder.textViewPrice.setText(String.valueOf(exer.getQuantity()));*/
+
 
             result=convertView;
 
@@ -75,13 +82,13 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
             result=convertView;
         }
 
-        Animation animation = AnimationUtils.loadAnimation(mContext, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
-        result.startAnimation(animation);
+        //Animation animation = AnimationUtils.loadAnimation(mContext, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
+        //result.startAnimation(animation);
         lastPosition = position;
 
-        viewHolder.txtName.setText(dataModel.getName());
+        /*viewHolder.txtName.setText(dataModel.getName());
         viewHolder.txtType.setText(dataModel.getType());
-        viewHolder.txtVersion.setText(dataModel.getVersion_number());
+        viewHolder.txtVersion.setText(dataModel.getVersion_number());*/
         viewHolder.info.setOnClickListener(this);
         viewHolder.info.setTag(position);
         // Return the completed view to render on screen
