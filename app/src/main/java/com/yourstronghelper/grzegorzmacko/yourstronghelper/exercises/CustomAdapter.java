@@ -89,8 +89,8 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
         /*viewHolder.txtName.setText(dataModel.getName());
         viewHolder.txtType.setText(dataModel.getType());
         viewHolder.txtVersion.setText(dataModel.getVersion_number());*/
-        viewHolder.info.setOnClickListener(this);
-        viewHolder.info.setTag(position);
+       // viewHolder.info.setOnClickListener(this);
+       // viewHolder.info.setTag(position);
         // Return the completed view to render on screen
         return convertView;
     }
