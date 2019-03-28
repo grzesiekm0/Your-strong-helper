@@ -26,8 +26,8 @@ import java.util.List;
 public class ExerciseActivity extends AppCompatActivity {
 
     private ListView recyclerView;
-    private ExerciseAdapter adapter;
-    private List<Exercise> exerciseList;
+    private CustomAdapter adapter;
+    private ArrayList<Exercise> exerciseList;
     private ProgressBar progressBar;
 
 
@@ -40,18 +40,18 @@ public class ExerciseActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressbar);
 
-        recyclerView = findViewById(R.id.recyclerview_products);
+        recyclerView = findViewById(R.id.list_view);
         //recyclerView.setHasFixedSize(true);
         //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         exerciseList = new ArrayList<>();
-        adapter = new ExerciseAdapter(this, exerciseList);
+        //adapter = new ExerciseAdapter(this, exerciseList);
         //adapter = new ExerciseAdapter(getApplicationContext(), exerciseList);
 
-        //adapter= new CustomAdapter(exerciseList,getApplicationContext());
+        adapter= new CustomAdapter(exerciseList,getApplicationContext());
 
 
-        //recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
 
