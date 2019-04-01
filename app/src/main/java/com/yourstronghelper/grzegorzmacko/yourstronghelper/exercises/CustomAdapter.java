@@ -39,11 +39,11 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        /*int position=(Integer) v.getTag();
+        int position=(Integer) v.getTag();
         Object object= getItem(position);
         Exercise dataModel=(Exercise)object;
 
-        switch (v.getId())
+        /*switch (v.getId())
         {
             case R.id.item_info:
                 Snackbar.make(v, "Release date " +dataModel.getFeature(), Snackbar.LENGTH_LONG)
@@ -60,7 +60,6 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
         Exercise dataModel = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
-       // Exercise exer = exer.getId(position);
         final View result;
 
         if (convertView == null) {
@@ -68,10 +67,10 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.layout_exercise, parent, false);
-            /*viewHolder.textViewName.setText(exer.getName());
-            viewHolder.textViewBrand.setText(exer.getType());
-            viewHolder.textViewDesc.setText(String.valueOf(exer.getSeries()));
-            viewHolder.textViewPrice.setText(String.valueOf(exer.getQuantity()));*/
+            viewHolder.textViewName = (TextView) convertView.findViewById(R.id.textview_name);
+            viewHolder.textViewBrand = (TextView) convertView.findViewById(R.id.textview_brand);
+            viewHolder.textViewDesc = (TextView) convertView.findViewById(R.id.textview_desc);
+            viewHolder.textViewPrice = (TextView) convertView.findViewById(R.id.textview_price);
 
 
             result=convertView;
@@ -86,9 +85,10 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
         //result.startAnimation(animation);
         lastPosition = position;
 
-        /*viewHolder.txtName.setText(dataModel.getName());
-        viewHolder.txtType.setText(dataModel.getType());
-        viewHolder.txtVersion.setText(dataModel.getVersion_number());*/
+        viewHolder.textViewName.setText(dataModel.getName());
+        viewHolder.textViewBrand.setText(dataModel.getType());
+       viewHolder.textViewDesc.setText(Integer.toString(dataModel.getSeries()));
+        viewHolder.textViewPrice.setText(Integer.toString(dataModel.getQuantity()));
        // viewHolder.info.setOnClickListener(this);
        // viewHolder.info.setTag(position);
         // Return the completed view to render on screen
