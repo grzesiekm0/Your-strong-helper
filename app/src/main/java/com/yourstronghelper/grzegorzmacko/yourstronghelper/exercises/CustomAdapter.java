@@ -1,12 +1,14 @@
 package com.yourstronghelper.grzegorzmacko.yourstronghelper.exercises;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +28,7 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
         TextView textViewBrand;
         TextView textViewDesc;
         TextView textViewPrice;
-        ImageView info;
+        Button buttonInfo;
     }
 
     public CustomAdapter(ArrayList<Exercise> data, Context context) {
@@ -43,13 +45,14 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
         Object object= getItem(position);
         Exercise dataModel=(Exercise)object;
 
-        /*switch (v.getId())
+        switch (v.getId())
         {
-            case R.id.item_info:
-                Snackbar.make(v, "Release date " +dataModel.getFeature(), Snackbar.LENGTH_LONG)
+            case R.id.button_info:
+                Snackbar.make(v, "Release date " +dataModel.getName(), Snackbar.LENGTH_LONG)
                         .setAction("No action", null).show();
+                System.out.println("dupa");
                 break;
-        }*/
+        }
     }
 
     private int lastPosition = -1;
@@ -71,6 +74,7 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
             viewHolder.textViewBrand = (TextView) convertView.findViewById(R.id.textview_brand);
             viewHolder.textViewDesc = (TextView) convertView.findViewById(R.id.textview_desc);
             viewHolder.textViewPrice = (TextView) convertView.findViewById(R.id.textview_price);
+            viewHolder.buttonInfo = (Button) convertView.findViewById(R.id.button_info);
 
 
             result=convertView;
