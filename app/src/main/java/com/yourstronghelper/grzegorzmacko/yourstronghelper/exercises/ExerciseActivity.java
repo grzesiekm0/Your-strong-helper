@@ -39,18 +39,9 @@ public class ExerciseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
 
         progressBar = findViewById(R.id.progressbar);
-
         recyclerView = findViewById(R.id.list_view);
-        //recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         exerciseList = new ArrayList<>();
-        //adapter = new ExerciseAdapter(this, exerciseList);
-        //adapter = new ExerciseAdapter(getApplicationContext(), exerciseList);
-
         adapter= new CustomAdapter(exerciseList,getApplicationContext());
-
-
         recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
