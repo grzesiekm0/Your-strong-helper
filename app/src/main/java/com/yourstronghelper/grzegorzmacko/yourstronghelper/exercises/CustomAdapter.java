@@ -93,8 +93,8 @@ public class CustomAdapter extends ArrayAdapter<Exercise> implements View.OnClic
         viewHolder.textViewBrand.setText(dataModel.getType());
        viewHolder.textViewDesc.setText(Integer.toString(dataModel.getSeries()));
         viewHolder.textViewPrice.setText(Integer.toString(dataModel.getQuantity()));
-       // viewHolder.info.setOnClickListener(this);
-       // viewHolder.info.setTag(position);
+        viewHolder.buttonInfo.setOnClickListener(this);
+        viewHolder.buttonInfo.setTag(position);
         // Return the completed view to render on screen
         return convertView;
     }
